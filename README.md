@@ -106,7 +106,9 @@ Create a pair called `ems` to be called when setting up and running your EMR clu
 
 <img src = "images/create-ec2-pair.png" width = "70%" />
 
-The name `ems` is entered and all default values are kept before clicking the `Create key pair` button in the example below:
+**Hint:** *Click `Key Pairs` under `Resources`, then `Create New Pair`.*
+
+The name `ems` is entered and all default values are kept before clicking the `Create key pair` button (again) in the example below:
 
 <img src = "images/create-ec2-pair-2.png" width = "70%" />
 
