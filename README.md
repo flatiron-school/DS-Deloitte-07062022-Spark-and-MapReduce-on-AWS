@@ -153,6 +153,10 @@ Finally, you'll add a step by clicking the `Steps` tab at the top of your cluste
 
 <img src = "images/add-step.png?" width = "70%" />
 
+**Note:** *Copy the `data_source` and `output_uri` (provided below) and paste them in as `Arguments`:*
+
+`--data_source s3://DOC-EXAMPLE-BUCKET/food_establishment_data.csv`<br>`--output_uri s3://DOC-EXAMPLE-BUCKET/myOutputFolder`					
+
 ## Terminate Cluster
 
 Be sure to terminate your cluster by selecting your cluster in the console interface and clicking the `Terminate` button!
