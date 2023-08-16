@@ -72,24 +72,6 @@ Below is a table of differences between Spark and Hadoop:
 
 ##### [Source](https://www.geeksforgeeks.org/difference-between-hadoop-and-spark/)
 
-## AWS EMR Landing Page
-
-<img src = "images/emr.png" width = "70%"/>
-
-## AWS EMR FAQs
-
-<img src = "images/emr-overview.png" width = "70%" />
-
-## AWS EMR Use Cases
-
-<img src = "images/emr-use-cases.png" width = "70%" />
-
-## AWS EMR Features and Benefits
-
-<img src = "images/emr-features-and-benefits.png" width = "70%" />
-
-For more info, check out the [AWS EMR page](https://aws.amazon.com/emr/?nc=sn&loc=0).
-
 [Back to TOC](#Contents)
 
 # Getting Started
@@ -100,21 +82,13 @@ For more info, check out the [AWS EMR page](https://aws.amazon.com/emr/?nc=sn&lo
 
 To get setup to run an EMR cluster in the cloud, you first have to [set up an EC2 key pair for SSH](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-setting-up.html#emr-setting-up-key-pair). In other words, in order to authenticate and connect to the nodes in a cluster over a secure channel using the Secure Shell (SSH) protocol, you must create an Amazon Elastic Compute Cloud ([Amazon EC2](https://aws.amazon.com/ec2/)) key pair before you launch the cluster. You can also create a cluster without a key pair. This is usually done with transient clusters that start, run steps, and then terminate automatically.
 
-<img src = "images/ec2-key-pairs.png" width = "70%" />
-
 Create a pair called `ems` to be called when setting up and running your EMR cluster:
-
-<img src = "images/create-ec2-pair.png" width = "70%" />
 
 **Hint:** *Click `Key Pairs` under `Resources`, then `Create New Pair`.*
 
 The name `ems` is entered and all default values are kept before clicking the `Create key pair` button (again) in the example below:
 
-<img src = "images/create-ec2-pair-2.png" width = "70%" />
-
 Success!
-
-<img src = "images/created-ec2-pair.png" width = "70%" />
 
 ## Create an S3 Bucket
 
@@ -122,11 +96,7 @@ Success!
 
 Now we must create an S3 bucket, into which you'll upload the data source and [pySpark](https://spark.apache.org/docs/latest/api/python/getting_started/index.html) script:
 
-<img src = "images/s3-buckets.png" width = "70%" />
-
 Using the `Upload` button in the interface, the `csv` and `.py` files are added to the bucket called `health-violations-script`, whereas the `logs` folders is automatically added as an artifact of the EMR cluster running our script in the cloud:
-
-<img src = "images/s3-bucket.png" width = "70%" />
 
 ## Set up and Run an EMR Cluster
 
@@ -137,27 +107,17 @@ You'll make a few changes from the default parameters:
 1. Change the `S3 folder` path to include the name of the bucket you created with `/logs` appended to it, and
 2. Select `Spark` from the list of `Applications` (see image below):
 
-<img src = "images/create-cluster-1.png" width = "70%" />
-
 3. Select `ems` (or whatever you called the key pair you created at the beginning of the tutorial) from the `EC2 key pair` dropdown, as shown below:
 
 **Note:** *The `m5.xlarge` instance type isn't available in all regions, so the next largest available size would need to be selected when using services in the `us-east-1` region, for example.*
 
-<img src = "images/create-cluster-2.png" width = "70%" />
-
-If successful, you should see this:
-
-<img src = "images/pending.png" width = "70%" />
-
-Finally, you'll add a step by clicking the `Steps` tab at the top of your cluster interface in the console, and then clicking the blue `Add step` button. You'll then make a couple changes to the default parameters, as shown below:
-
-<img src = "images/add-step.png?" width = "70%" />
+Finally, you'll add a step by clicking the `Steps` tab at the top of your cluster interface in the console, and then clicking the blue `Add step` button. You'll then make a couple of changes to the default parameters, as shown below:
 
 **Note:** *Copy the `data_source` and `output_uri` (provided below) and paste them in as `Arguments`:*
 
 `--data_source s3://health-violations-script/food_establishment_data.csv`<br>`--output_uri s3://health-violations-script/myOutputFolder`
 
-Additionaly, you'll need to copy and paste the following into the `Application Location` field:
+Additionally, you'll need to copy and paste the following into the `Application Location` field:
 
 `s3://health-violations-script/health_violations.py`
 
@@ -165,10 +125,6 @@ Additionaly, you'll need to copy and paste the following into the `Application L
 
 Assuming that your cluster ran successfully, you'll be able to access a `csv` file beginning with `part-` from the `myOutputFolder` folder in the S3 bucket you created for this tutorial:
 
-<img src = "images/results.png" width = "30%" />
-
 ## Terminate Cluster
 
 Be sure to terminate your cluster by selecting your cluster in the console interface and clicking the `Terminate` button!
-
-<img src = "images/terminate-cluster.png" width = "70%" />
